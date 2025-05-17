@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import javax.swing.SwingUtilities;
 
 public class ProductRecursion extends JFrame {
     private JPanel inputPanel;
@@ -53,7 +54,7 @@ public class ProductRecursion extends JFrame {
                 SwingUtilities.invokeLater(() -> {
                     inputPanel.revalidate();
                     inputPanel.repaint();
-                    Component[] components = inputPanel.getComponents()
+                    Component[] components = inputPanel.getComponents();
                     if (components.length > 0 && components[components.length - 1] instanceof JTextField) {
                         ((JTextField) components[components.length - 1]).requestFocusInWindow();
                     }
