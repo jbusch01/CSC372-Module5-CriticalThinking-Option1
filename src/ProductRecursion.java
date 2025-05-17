@@ -1,29 +1,29 @@
-import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 class ProductRecursion {
     public static void main(String[] args) {
-        Scanner scnr = new Scanner(System.in);
         int[] numbers = new int[5];
         
-        System.out.println("Enter 5 whole numbers to multiply:");
-
         for (int i = 0; i < numbers.length; i++) {
             while (true) {
-                System.out.println("Number " + (i + 1) + ": ");
-                if (scnr.hasNextInt()) {
-                    numbers[i] = scnr.nextInt();
+                String input = JOptionPane.showInputDialog(null, "Enter whole number #" + (i + 1) + ": ");
+
+                if (input == null || input.trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Input cannot be blank. Please enter a whole number (no commas, decimals, or spaces).");
+                    continue;
+                }
+
+                try {
+                    numbers[i] = Integer.parseInt(input.trim());
                     break;
-                } else {
-                    System.out.println("Invalid input. Please enter a whole number (no decimals or commas).");
-                    scnr.next();
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Invalid input. Please enter a whole number (no commas, decimals, or spaces).");
                 }
             }
         }
 
         int product = multiply(numbers, 0);
-        System.out.println("The total of all numbers multiplied together is: " + product);
-
-        scnr.close();
+        JOptionPane.showMessageDialog(null, "The total of all numbers multiplied together is: " + product + "!");
 
     }
     
