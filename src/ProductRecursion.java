@@ -73,6 +73,9 @@ public class ProductRecursion extends JFrame {
     }
 
     public static void main (String[] args) {
-        SwingUtilities.invokeLater(ProductRecursion::new);
+        SwingUtilities.invokeLater(() -> {
+            ProductRecursion app = new ProductRecursion();
+            app.setVisible(true);
+        });
     }
 }
