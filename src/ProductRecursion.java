@@ -27,6 +27,11 @@ public class ProductRecursion extends JFrame {
     private void addNewInputField() {
         if (fieldCount >= MAX_FIELDS) return;
 
+        String[] labels = {"First", "Second", "Third", "Fourth", "Fifth"};
+        JLabel label = new JLabel(labels[fieldCount] + " Number:");
+        label.setAlignmentX(Component.LEFT_ALIGNMENT);
+        inputPanel.add(label);
+
         JTextField inputField = new JTextField();
         inputField.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30));
         inputField.requestFocusInWindow();
