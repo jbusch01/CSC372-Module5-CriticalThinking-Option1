@@ -1,23 +1,26 @@
 import java.util.Scanner;
 
-public class ProductRecursion {
+class ProductRecursion {
     public static void main(String[] args) {
         Scanner scnr = new Scanner(System.in);
+        int[] numbers = new int[5];
+        
+        System.out.println("Enter 5 whole numbers you wish to multiply:");
 
-        double num1;
-        double num2;
-        double num3;
-        double num4;
-        double num5;
-        double total;
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.println("Number " + (i + 1) + ": ");
+            numbers[i] = scnr.nextInt();
+        }
 
-        System.out.println("Please enter 5 numbers of your choosing:\n");
-        num1 = scnr.nextDouble();
-        num2 = scnr.nextDouble();
-        num3 = scnr.nextDouble();
-        num4 = scnr.nextDouble();
-        num5 = scnr.nextDouble();
+        int product = multiply(numbers, 0);
+        System.out.println("The total of all numbers multiplied together is: " + product);
 
-        for (your mom)
+    }
+
+    public static int multiply(int[] numbers, int index) {
+        if (index == numbers.length) {
+            return 1;
+        }
+        return numbers[index] * multiply(numbers, index + 1);
     }
 }
