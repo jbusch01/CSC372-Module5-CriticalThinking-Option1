@@ -9,6 +9,7 @@ public class ProductRecursion extends JFrame {
     private ArrayList<Integer> numbers = new ArrayList<>();
     private int fieldCount = 0;
     private final int MAX_FIELDS = 5;
+    private JLabel resultLabel = new JLabel("");
 
     public ProductRecursion() {
         setTitle("Enter 5 Whole Numbers");
@@ -52,10 +53,23 @@ public class ProductRecursion extends JFrame {
 
                 if (fieldCount == MAX_FIELDS) {
                     int product = multiply(numbers, 0);
-                    JOptionPane.showMessageDialog(this, "Product: " + product);
+
+                    resultLabel.setText("Final Product: " + product);
+                    resultLabel.setFont(new Font("SansSerif", Font.BOLD, 14));
+                    resultLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+                    inputPanel.add(Box.createVerticalStrut(10));
+                    inputPanel.add(resultLabel);
+
+                    SwingUtilities.invokeLater(() -> {
+                        inputPanel.revalidate();
+                        inputPanel.repaint();
+                        resultLabel.scrollRectToVisible(resultLabel.getBounds());
+                    });
                 } else {
                     addNewInputField();
                 }
+
                 SwingUtilities.invokeLater(() -> {
                     inputPanel.revalidate();
                     inputPanel.repaint();
@@ -64,6 +78,7 @@ public class ProductRecursion extends JFrame {
                         ((JTextField) components[components.length - 1]).requestFocusInWindow();
                     }
                 });
+
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "Invalid input. Please enter a whole number (no commas or decimals).");
             }
